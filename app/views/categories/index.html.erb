@@ -1,1 +1,6 @@
 <p><%= @categories.size%></p>
+<ul>
+  <% @categories.each do |category|%>
+    <li><%= category.name%></li>
+  <% end %>
+</ul>

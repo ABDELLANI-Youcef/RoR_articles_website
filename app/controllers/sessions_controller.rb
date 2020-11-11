@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     unless user.nil?
       session[:user_id] = user.id
       flash[:notice] = 'Logged in successfully.'
-      redirect_to user
+      redirect_to categories_path
     else
       flash.now[:alert] = 'You entered incorrect name.'
       render 'new'

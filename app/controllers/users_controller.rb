@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice] = "Welcome #{@user.name}, you have successfully signed up."
       puts flash[:notice]
-      redirect_to @user
+      redirect_to categories_path
     else
       render 'new'
     end
