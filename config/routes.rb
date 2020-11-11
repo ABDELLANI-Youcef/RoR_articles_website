@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :articles do
     resources :image_elements
   end
+  resources :categories
 end
