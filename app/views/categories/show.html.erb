@@ -1,0 +1,7 @@
+<p><%=@category.name%></p>
+<ul>
+  <% @articles.each do |article| %>
+    <li><%= article.title%></li>
+    <%= image_tag  article.image_element.image , style: "max-width: 100%" %>
+  <% end %>
+</ul>

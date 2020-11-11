@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
-    # load the articles
+    @articles = @category.articles
   end
   
   def index
