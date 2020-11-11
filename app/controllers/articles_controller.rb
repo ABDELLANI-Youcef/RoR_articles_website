@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find(params[:id])
   end
 
   def new
@@ -12,7 +13,9 @@ class ArticlesController < ApplicationController
 
   def create
     article = current_user.articles.build(article_params)
-    if article.save
+    if article.save # if valid
+      article.image_element = ImageElement.new(image_params)
+
       flash[:notice] = "The article #{article.title} has been successfully created."
       redirect_to current_user
     else
@@ -36,5 +39,9 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :text)
+  end
+
+  def image_params
+    params.require(:article).permit(:image)
   end
 end
