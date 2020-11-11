@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, except: [:new]
   resources :articles do
     resources :image_elements
+    resources :votes, only: [:create, :destroy]
   end
   resources :categories
 end

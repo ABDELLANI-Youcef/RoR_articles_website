@@ -3,5 +3,6 @@
   <% @articles.each do |article| %>
     <li><%= article.title%></li>
     <%= image_tag  article.image_element.image , style: "max-width: 100%" %>
+    <%= vote_or_unvote_btn(article) %>
   <% end %>
 </ul>
