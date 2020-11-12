@@ -1,8 +1,27 @@
-<p><%=@category.name%></p>
-<ul>
-  <% @articles.each do |article| %>
-    <li><%= article.title%></li>
-    <%= image_tag  article.image_element.image , style: "max-width: 100%" %>
-    <%= vote_or_unvote_btn(article) %>
-  <% end %>
-</ul>
+<div class="row">
+
+ <% @articles.each_with_index do |article , index| %>
+    <% if (index/2)%2 == 0%>
+      <div class="col-3 px-0">
+        <%= image_tag  article.image_element.image , class: "w-100 h-100"%>
+      </div>
+      <div class="bg-white col-3">
+        <h3><%= article.title%></h3>
+        <p><%= article.text%></p>
+        <p><%= article.user.name%></p>
+        <%= vote_or_unvote_btn(article) %>
+      </div>
+    <% else %>
+      <div class="bg-white col-3">
+        <h3><%= article.title%></h3>
+        <p><%= article.text%></p>
+        <p><%= article.user.name%></p>
+        <%= vote_or_unvote_btn(article) %>
+      </div>
+      <div class="col-3 px-0">
+        <%= image_tag  article.image_element.image , class: "w-100 h-100"%>
+      </div>
+    <% end %>
+  <% end %> 
+
+</div>

@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
   def show
+    # n+1 queries problem (try to load athors name eager load)
     @category = Category.find(params[:id])
-    @articles = @category.articles
+    @articles = @category.articles.includes(:user)
   end
   
   def index
