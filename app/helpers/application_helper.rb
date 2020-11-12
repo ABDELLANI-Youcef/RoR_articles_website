@@ -5,8 +5,15 @@ module ApplicationHelper
       link_to 'Log out', logout_path, class: "nav-link", method: :delete
     else
       content = link_to 'Log in', login_path, class: "nav-link"
+      content.concat "|"
       content.concat link_to 'Sign up', signup_path, class: "nav-link"
       return content
+    end
+  end
+
+  def write_article_link
+    if logged_in?
+      link_to  "Write an Article", new_article_path, class: "btn btn-outline-success my-2 my-sm-0"
     end
   end
 end
