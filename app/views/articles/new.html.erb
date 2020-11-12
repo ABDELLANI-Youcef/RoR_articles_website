@@ -1,8 +1,8 @@
-<%= form_with(model: @article, local: true) do |f| %>
-
-
-  <div class="form-group">
+<h1 class="text-center" style="color:orange">Write a new article</h1>
+<%= form_with(model: @article, local: true, class: "bg-secondary p-3 rounded") do |f| %>
+  <div class="form-group border rounded p-3">
     <%= f.fields_for :categories, @categories do |category_f| %>
+      <h2 class="text-white">Categories to which belong this article:</h2>
       <% @categories.each do |category|%>
         <div class="form-check">
           <%= check_box_tag("category_#{category.name}", category.id, false, :name=> 'article[category_ids][]', id: "category-option-#{category.id}") %>
