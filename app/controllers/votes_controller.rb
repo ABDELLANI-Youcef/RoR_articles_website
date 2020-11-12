@@ -18,7 +18,7 @@ class VotesController < ApplicationController
       vote.destroy
       redirect_to root_path, notice: 'You disliked the article.'
     else
-      redirect_to root_path, alert: 'You cannot unvote post that you did not like before.'
+      redirect_to root_path, alert: 'You cannot unvote post that you did not vote before for it.'
     end
   end
 end

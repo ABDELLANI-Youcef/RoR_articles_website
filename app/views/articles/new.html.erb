@@ -3,7 +3,13 @@
 
   <div class="form-group">
     <%= f.fields_for :categories, @categories do |category_f| %>
-      <%= collection_check_boxes(:categories, :id, Category.all, :id, :name )%>
+      <% @categories.each do |category|%>
+        <div class="form-check">
+          <%= check_box_tag("category_#{category.name}", category.id, false, :name=> 'article[category_ids][]', id: "category-option-#{category.id}") %>
+          
+          <%= label_tag("category-option-#{category.id}", category.name) %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 

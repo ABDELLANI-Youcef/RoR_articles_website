@@ -9,16 +9,19 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-    @article_categories = Category.all.map{ |element| @article.article_categories.build(category_id: element.id)}
+    @categories = Category.all
   end
 
   def create
     article = current_user.articles.build(article_params)
-    
-    if article.save # if valid
+    article_categories = params[:article][:category_ids]
+    if article_categories.nil?
+      # aaa
+      flash[:error] = "you should select at least one category"
+      # render 'new'
+      redirect_to new_article_path
+    elsif article.save
       article.image_element = ImageElement.new(image_params)
-
-      article_categories = params[:categories][:id]
 
       article_categories.each do |ac|
         unless ac.empty?
@@ -56,7 +59,7 @@ class ArticlesController < ApplicationController
   end
 
   def categories_params
-    params.require(:categories).permit(:id)
+    params.require(:article).permit(:category_ids)
   end
   
 end
