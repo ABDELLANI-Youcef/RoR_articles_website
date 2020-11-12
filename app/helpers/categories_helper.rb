@@ -7,4 +7,8 @@ module CategoriesHelper
       link_to('vote!', article_votes_path(article_id: article.id), method: :post, class: "btn btn-primary")
     end
   end
+
+  def trunced_text(article)
+    article.text[0...100]
+  end
 end
