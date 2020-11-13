@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
       flash[:error] = "you should select at least one category"
       redirect_to new_article_path
     elsif article.save
-      article.image_element = ImageElement.new(image_params)
+      article.image_element = ImageElement.new(image_params) unless image_params.nil?
 
       article_categories.each do |ac|
         unless ac.empty?

@@ -3,7 +3,7 @@
  <% @articles.each_with_index do |article , index| %>
     <% if (index/2)%2 == 0%>
       <div class="col-3 px-0" style="height:300px">
-        <%= image_tag  article.image_element.image , class: "w-100 h-100"%>
+        <%= image_tag  article.image_element.image , class: "w-100 h-100"  if article.image_element.image.present?%>
       </div>
       <div class="bg-white col-3" style="height:300px">
         <h3><%= article.title%></h3>
@@ -19,7 +19,7 @@
         <%= vote_or_unvote_btn(article) %>
       </div>
       <div class="col-3 px-0" style="height:300px">
-        <%= image_tag  article.image_element.image , class: "w-100 h-100"%>
+        <%= image_tag  article.image_element.image , class: "w-100 h-100"  if article.image_element.image.present?%>
       </div>
     <% end %>
   <% end %> 
