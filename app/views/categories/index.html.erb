@@ -12,14 +12,16 @@
 <div class="row w-100 mx-auto">
   <% @categories.each do | category | %>
     <% article = category.articles.order('created_at DESC').first%>
-    <div class="position-relative col-3 px-0">
-      <%= image_tag  article.image_element.image, class:"w-100" if article.image_element.image.present?%>
-      <div class="position-absolute text-white" style="top: 10px">
-        <h3><%= category.name%></h3>
+    <% unless article.nil? %>
+      <div class="position-relative col-3 px-0">
+        <%= image_tag  article.image_element.image, class:"w-100" if article.image_element.image.present?%>
+        <div class="position-absolute text-white" style="top: 10px">
+          <h3><%= category.name%></h3>
+        </div>
+        <div class="position-absolute text-white" style="bottom: 10px">
+          <h3><%= article.title%></h3>
+        </div>
       </div>
-      <div class="position-absolute text-white" style="bottom: 10px">
-        <h3><%= article.title%></h3>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

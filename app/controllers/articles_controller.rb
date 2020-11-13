@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
         end
       end
       flash[:notice] = "The article #{article.title} has been successfully created."
-      redirect_to root_path
+      redirect_to current_user
     else
       redirect_to new_article_path
     end

@@ -8,13 +8,13 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all.includes(:articles)
     if @categories.nil?
-      a = Category.create(name: "Technology")
+      a = Category.create(name: "Technology", priority: 0)
       a.save
-      a = Category.create(name: "Books")
+      a = Category.create(name: "Books", priority: 1)
       a.save
-      a = Category.create(name: "History")
+      a = Category.create(name: "History", priority: 2)
       a.save
-      a = Category.create(name: "News")
+      a = Category.create(name: "News", priority: 3)
       a.save
       @categories = Category.all.includes(:articles)
     end
