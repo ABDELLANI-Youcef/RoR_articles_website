@@ -8,12 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <% articles.each do | article | %>
+    <% articles.each_with_index do | article , index | %>
       <tr>
         <th scope="row"><%= article.title %></th>
         <td><%= article.vote_ids.size%></td>
         <td><%= link_to  "delete", article_path(id: article.id), method: :delete, class: "btn btn-danger" %></td>
-        <td><%= link_to  "edit", edit_article_path(article) %></td>
+        <td><%= link_to  "edit", edit_article_path(article), id: "edit-#{index}" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   def show
     @user = current_user 
-    @articles = @user.articles.order('created_at ASC').includes(:votes)
+    @articles = @user.articles.order('created_at DESC').includes(:votes)
   end
 
   def new
