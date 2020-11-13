@@ -8,10 +8,14 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all.includes(:articles)
     if @categories.nil?
-      Category.create(name: "Technology")
-      Category.create(name: "Books")
-      Category.create(name: "History")
-      Category.create(name: "News")
+      a = Category.create(name: "Technology")
+      a.save
+      a = Category.create(name: "Books")
+      a.save
+      a = Category.create(name: "History")
+      a.save
+      a = Category.create(name: "News")
+      a.save
       @categories = Category.all.includes(:articles)
     end
     @articles = @categories.map{| category | category.articles.last}
