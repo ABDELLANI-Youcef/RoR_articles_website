@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   def show
     @user = current_user 
-    @articles = @user.articles.includes(:votes)
+    @articles = @user.articles.order('created_at ASC').includes(:votes)
   end
 
   def new
@@ -15,8 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Welcome #{@user.name}, you have successfully signed up."
-      puts flash[:notice]
-      redirect_to categories_path
+      redirect_to @user
     else
       render 'new'
     end
