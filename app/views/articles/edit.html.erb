@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="text-center" style="color:orange">Edit the article</h1>
+
+
+
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class:"form-control input-group-text" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :text, "Content" %>
+      <%= f.text_area :text, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image %>
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit(class: "btn btn-primary")  %>
+    </div>
+  <% end %>
+</div>

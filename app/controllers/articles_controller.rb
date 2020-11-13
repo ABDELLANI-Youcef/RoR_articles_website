@@ -16,9 +16,7 @@ class ArticlesController < ApplicationController
     article = current_user.articles.build(article_params)
     article_categories = params[:article][:category_ids]
     if article_categories.nil?
-      # aaa
       flash[:error] = "you should select at least one category"
-      # render 'new'
       redirect_to new_article_path
     elsif article.save
       article.image_element = ImageElement.new(image_params)
@@ -32,21 +30,38 @@ class ArticlesController < ApplicationController
       flash[:notice] = "The article #{article.title} has been successfully created."
       redirect_to root_path
     else
-      render 'new'
+      redirect_to new_article_path
     end
   end
 
   def edit
-    
+    @article = Article.find(params[:id])
   end
+  
 
   def update
-    
+    @article = Article.find(params[:id])
+      if @article.update_attributes(article_params)
+        flash[:success] = "Article was successfully updated"
+        redirect_to current_user
+      else
+        flash[:error] = "Something went wrong"
+        redirect_to current_user
+      end
   end
+  
 
   def destroy
-    
+    @article = Article.find(params[:id])
+    if @article.destroy
+      flash[:success] = 'Article was successfully deleted.'
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_back(fallback_location: root_path)
+    end
   end
+  
 
   private
 

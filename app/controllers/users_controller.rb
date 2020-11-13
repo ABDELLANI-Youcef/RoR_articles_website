@@ -2,12 +2,7 @@ class UsersController < ApplicationController
   
   def show
     @user = current_user 
-    # if logged_in?
-    #   @future_events = current_user.events.upcoming_events
-    #   @past_events = current_user.events.past_events
-    # else
-    #   redirect_to login_path
-    # end
+    @articles = @user.articles.includes(:votes)
   end
 
   def new

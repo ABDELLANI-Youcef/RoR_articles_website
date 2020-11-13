@@ -2,7 +2,9 @@ module ApplicationHelper
   # navigation bar
   def sign_in_out_up
     if logged_in?
-      link_to 'Log out', logout_path, class: "nav-link", method: :delete
+      content =  link_to current_user.name, current_user, class: "nav-link"
+      content.concat "|"
+      content.concat link_to 'Log out', logout_path, class: "nav-link", method: :delete
     else
       content = link_to 'Log in', login_path, class: "nav-link"
       content.concat "|"
