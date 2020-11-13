@@ -7,6 +7,13 @@ class CategoriesController < ApplicationController
   
   def index
     @categories = Category.all.includes(:articles)
+    if @categories.nil?
+      Category.create(name: "Technology")
+      Category.create(name: "Books")
+      Category.create(name: "History")
+      Category.create(name: "News")
+      @categories = Category.all.includes(:articles)
+    end
     @articles = @categories.map{| category | category.articles.last}
     group = Article.all.includes(:votes)
     count = group.map{ | article | article.votes.size}.max
