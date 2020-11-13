@@ -1,9 +1,13 @@
-<div class="position-relative">
-  <%= image_tag  @best_article.image_element.image, class:"w-100" %>
-  <div class="position-absolute text-white" style="bottom: 30px">
-    <h3><%= @best_article.title%></h3>
+<% if @best_article.nil?%>
+  <h1>Helo in our "Djelfa" Site</h1>
+<% else %>
+  <div class="position-relative">
+    <%= image_tag  @best_article.image_element.image, class:"w-100"  if @best_article.image_element.image.present?%>
+    <div class="position-absolute text-white" style="bottom: 30px">
+      <h3><%= @best_article.title%></h3>
+    </div>
   </div>
-</div>
+<% end %>
 
 <div class="row w-100 mx-auto">
   <% @categories.each do | category | %>
