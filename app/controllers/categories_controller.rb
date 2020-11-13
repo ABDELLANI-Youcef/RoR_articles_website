@@ -2,11 +2,15 @@ class CategoriesController < ApplicationController
   def show
     # n+1 queries problem (try to load athors name eager load)
     @category = Category.find(params[:id])
-    @articles = @category.articles.includes(:user)
+    @articles = @category.articles.order('created_at DESC').includes(:user)
   end
   
   def index
-    @categories = Category.all
+    @categories = Category.all.includes(:articles)
+    @articles = @categories.map{| category | category.articles.last}
+    group = Article.all.includes(:votes)
+    count = group.map{ | article | article.votes.size}.max
+    @best_article = group.select{ |article| article.votes.size == count}.first
   end
 
   def create

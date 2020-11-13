@@ -1,10 +1,14 @@
-<%= render 'shared/errors', obj: @user %>
-<%= form_with(model: @user, local: true) do |f| %>
-  <div class="form-group">
-    <label for="name"><%= f.label :name %></label>
-    <%= f.text_field :name, class: "form-control shadow rounded", id: "name", placeholder: "Enter your name" %>
-  </div>
-  <div class="my-3">
-    <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-primary") %>
-  </div>
-<% end %>
+<div class="container">
+  <%= render 'shared/errors', obj: @user %>
+  <h1 class="text-center mt-5 mb-4 text-white">Djelfa articles website</h1>
+  <%= form_with(model: @user, local: true) do |f| %>
+    <div class="form-group">
+      <label for="name" class="text-primary"><%= f.label :name %></label>
+      <%= f.text_field :name, class: "form-control shadow rounded", id: "name", placeholder: "Enter your name" %>
+    </div>
+
+    <div class="my-3">
+      <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-primary") %>
+    </div>
+  <% end %>
+</div>

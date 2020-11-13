@@ -8,14 +8,14 @@
       <div class="bg-white col-3" style="height:300px">
         <h3><%= article.title%></h3>
         <p><%= trunced_text(article)%></p>
-        <p><%= article.user.name%></p>
+        <p>By: <%= article.user.name%></p>
         <%= vote_or_unvote_btn(article) %>
       </div>
     <% else %>
       <div class="bg-white col-3" style="height:300px">
         <h3><%= article.title%></h3>
         <p><%= trunced_text(article)%></p>
-        <p><%= article.user.name%></p>
+        <p>By: <%= article.user.name%></p>
         <%= vote_or_unvote_btn(article) %>
       </div>
       <div class="col-3 px-0" style="height:300px">
