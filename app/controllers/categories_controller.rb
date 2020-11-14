@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
-  def show
-    # n+1 queries problem (try to load athors name eager load)
+  def show 
     @category = Category.find(params[:id])
     @articles = @category.articles.order('created_at DESC').includes(:user)
   end
@@ -34,6 +33,4 @@ class CategoriesController < ApplicationController
       render 'new'
     end
   end
-
-  # update
 end

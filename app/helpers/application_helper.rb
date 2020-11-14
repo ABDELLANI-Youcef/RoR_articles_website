@@ -1,5 +1,4 @@
 module ApplicationHelper
-  # navigation bar
   def sign_in_out_up
     if logged_in?
       content = link_to current_user.name, current_user, class: 'nav-link'
