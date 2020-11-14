@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User management', type: :feature do
-  let(:user) { User.create(name: 'Youcef ABDELLANI')}
+  let(:user) { User.create(name: 'Youcef ABDELLANI') }
   scenario 'User signs up successfully' do
     visit root_path
     click_on 'Sign up'

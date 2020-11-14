@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     article = current_user.articles.build(article_params)
     article_categories = params[:article][:category_ids]
     if article_categories.nil?
-      flash[:error] = "you should select at least one category"
+      flash[:error] = 'you should select at least one category'
       redirect_to new_article_path
     elsif article.save
       article.image_element = ImageElement.new(image_params) unless image_params.nil?
@@ -37,31 +37,26 @@ class ArticlesController < ApplicationController
   def edit
     @article = Article.find(params[:id])
   end
-  
 
   def update
     @article = Article.find(params[:id])
-      if @article.update_attributes(article_params)
-        flash[:success] = "Article was successfully updated"
-        redirect_to current_user
-      else
-        flash[:error] = "Something went wrong"
-        redirect_to current_user
-      end
+    if @article.update_attributes(article_params)
+      flash[:success] = 'Article was successfully updated'
+    else
+      flash[:error] = 'Something went wrong'
+    end
+    redirect_to current_user
   end
-  
 
   def destroy
     @article = Article.find(params[:id])
     if @article.destroy
       flash[:success] = 'Article was successfully deleted.'
-      redirect_back(fallback_location: root_path)
     else
       flash[:error] = 'Something went wrong'
-      redirect_back(fallback_location: root_path)
     end
+    redirect_back(fallback_location: root_path)
   end
-  
 
   private
 
@@ -76,5 +71,4 @@ class ArticlesController < ApplicationController
   def categories_params
     params.require(:article).permit(:category_ids)
   end
-  
 end

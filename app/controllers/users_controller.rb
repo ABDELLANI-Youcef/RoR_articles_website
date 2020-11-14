@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  
   def show
-    @user = current_user 
+    @user = current_user
     @articles = @user.articles.order('created_at DESC').includes(:votes)
   end
 

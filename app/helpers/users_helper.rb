@@ -1,5 +1,5 @@
 module UsersHelper
-  def articles_shows(articles)
-    render "table", articles: @articles
+  def articles_shows(_articles)
+    render 'table', articles: @articles
   end
 end

@@ -1,16 +1,13 @@
 class VotesController < ApplicationController
-
   def create
     @vote = current_user.votes.new(article_id: params[:article_id])
     if @vote.save
-      flash[:notice] = "Vote successfully created"
-      redirect_back(fallback_location: root_path)
+      flash[:notice] = 'Vote successfully created'
     else
-      flash[:error] = "Something went wrong"
-      redirect_back(fallback_location: root_path)
+      flash[:error] = 'Something went wrong'
     end
+    redirect_back(fallback_location: root_path)
   end
-  
 
   def destroy
     vote = Vote.find_by(id: params[:id], user: current_user, article_id: params[:article_id])

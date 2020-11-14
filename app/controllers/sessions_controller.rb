@@ -3,13 +3,13 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(name: params[:session][:name])
-    unless user.nil?
+    if user.nil?
+      flash.now[:alert] = 'You entered incorrect name.'
+      render 'new'
+    else
       session[:user_id] = user.id
       flash[:notice] = 'Logged in successfully.'
       redirect_to categories_path
-    else
-      flash.now[:alert] = 'You entered incorrect name.'
-      render 'new'
     end
   end
 

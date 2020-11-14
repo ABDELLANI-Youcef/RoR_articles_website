@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Articles", type: :feature do
-  let(:user) { User.create(name: 'Youcef ABDELLANI')}
+RSpec.describe 'Articles', type: :feature do
+  let(:user) { User.create(name: 'Youcef ABDELLANI') }
   scenario 'User writes article successfully' do
     visit root_path
     click_on 'Log in'
@@ -63,7 +63,7 @@ RSpec.describe "Articles", type: :feature do
     click_on 'Youcef ABDELLANI'
     sleep(3)
     expect(page).to have_content('Youcef article')
-    click_on "edit-0"
+    click_on 'edit-0'
     sleep(3)
     expect(page).to have_content('Edit the article')
     fill_in 'article_title', with: 'Youcef First article'
