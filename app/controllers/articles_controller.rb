@@ -3,34 +3,33 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
-  def show
-    @article = Article.find(params[:id])
-  end
-
   def new
     @article = Article.new
     @categories = Category.all
   end
 
   def create
-    article = current_user.articles.build(article_params)
+    @article = current_user.articles.build(article_params)
     article_categories = params[:article][:category_ids]
     if article_categories.nil?
       flash[:error] = 'you should select at least one category'
-      redirect_to new_article_path
-    elsif article.save
-      article.image_element = ImageElement.new(image_params) unless image_params.nil?
+      @categories = Category.all
+      render 'new'
+    elsif @article.save
+      @article.image_element = ImageElement.new(image_params) unless image_params.nil?
 
       article_categories.each do |ac|
         unless ac.empty?
-          category_of_article = article.article_categories.build(category_id: ac)
+          category_of_article = @article.article_categories.build(category_id: ac)
           category_of_article.save
         end
       end
-      flash[:notice] = "The article #{article.title} has been successfully created."
+      flash[:notice] = "The article #{@article.title} has been successfully created."
       redirect_to current_user
     else
-      redirect_to new_article_path
+      flash[:error] = @article.:error.full_message
+      @categories = Category.all
+      render 'new'
     end
   end
 

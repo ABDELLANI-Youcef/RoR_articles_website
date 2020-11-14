@@ -1,8 +1,8 @@
 class Article < ApplicationRecord
   validates :title, presence: true, uniqueness: true, length: { minimum: 3 }
-  validates :user_id, presence: true
+  validates :author_id, presence: true
   validates :text, presence: true, length: { minimum: 10 }
-  belongs_to :user
+  belongs_to :author, class_name: "User"
   has_many :votes, dependent: :destroy
   has_many :user_voted, through: :votes, source: :user
   has_many :article_categories, dependent: :destroy
