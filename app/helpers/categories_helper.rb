@@ -14,4 +14,20 @@ module CategoriesHelper
   def trunced_text(article)
     article.text[0...100]
   end
+
+  def show_articles(articles)
+    content = render 'article_image', article: articles.first
+    content.concat render 'article_description', article: articles.first
+    articles.each_with_index do |article , index|
+      next if index.zero?
+      if (index/2)%2 == 0
+        content.concat render 'article_image', article: article
+        content.concat render 'article_description', article: article
+      else
+        content.concat render 'article_description', article: article
+        content.concat render 'article_image', article: article
+       end
+    end
+    content
+  end
 end
