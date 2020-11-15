@@ -7,4 +7,8 @@ class User < ApplicationRecord
   def articles_desc
     self.articles.order('created_at DESC').includes(:votes)
   end
+
+  def voted_article?(article)
+    self.votes.find_by(article_id: article.id)
+  end
 end

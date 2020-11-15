@@ -2,8 +2,8 @@
 module CategoriesHelper
   def vote_or_unvote_btn(article)
     return unless logged_in?
-
-    vote = Vote.find_by(article: article, user: current_user)
+    # vote = Vote.find_by(article: article, user: current_user)
+    vote = current_user.voted_article?(article)
     if vote
       link_to('Delete vote!', article_vote_path(id: vote.id, article_id: article.id),
               method: :delete, class: 'btn btn-danger')
