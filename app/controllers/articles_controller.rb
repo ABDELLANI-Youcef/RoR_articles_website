@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :find_article, only: [:destroy, :update, :edit]
   def index
     @articles = Article.all
   end
@@ -30,12 +31,9 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update_attributes(article_params)
       flash[:success] = 'Article was successfully updated'
     else
@@ -45,7 +43,6 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     if @article.destroy
       flash[:success] = 'Article was successfully deleted.'
     else
@@ -66,5 +63,9 @@ class ArticlesController < ApplicationController
 
   def categories_params
     params.require(:article).permit(:category_ids)
+  end
+
+  def find_article
+    @article = Article.find(params[:id])
   end
 end
