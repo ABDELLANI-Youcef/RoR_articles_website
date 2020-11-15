@@ -5,10 +5,10 @@ class User < ApplicationRecord
   has_many :voted_articles, through: :votes, source: :article
 
   def articles_desc
-    self.articles.order('created_at DESC').includes(:votes)
+    articles.order('created_at DESC').includes(:votes)
   end
 
   def voted_article?(article)
-    self.votes.find_by(article_id: article.id)
+    votes.find_by(article_id: article.id)
   end
 end

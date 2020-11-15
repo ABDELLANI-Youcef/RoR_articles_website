@@ -2,6 +2,7 @@
 module CategoriesHelper
   def vote_or_unvote_btn(article)
     return unless logged_in?
+
     # vote = Vote.find_by(article: article, user: current_user)
     vote = current_user.voted_article?(article)
     if vote

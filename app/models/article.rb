@@ -10,10 +10,10 @@ class Article < ApplicationRecord
   has_one :image_element, dependent: :destroy
 
   def votes_count
-    self.votes.count
+    votes.count
   end
 
-  def Article.best_article
+  def self.best_article
     Article.find_by(id: Article.joins(:votes).order(count_all: :desc).group(:id).count.keys.first)
   end
 end

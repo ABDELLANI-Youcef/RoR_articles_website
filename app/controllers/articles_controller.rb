@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :find_article, only: [:destroy, :update, :edit]
+  before_action :find_article, only: %i[destroy update edit]
   def index
     @articles = Article.all
   end
@@ -19,10 +19,8 @@ class ArticlesController < ApplicationController
     elsif @article.save
       @article.image_element = ImageElement.new(image_params) unless image_params.empty?
       article_categories.each do |ac|
-        unless ac.empty?
-          category_of_article = @article.article_categories.build(category_id: ac)
-          category_of_article.save
-        end
+        category_of_article = @article.article_categories.build(category_id: ac)
+        category_of_article.save
       end
       flash[:notice] = "The article #{@article.title} has been successfully created."
       redirect_to current_user

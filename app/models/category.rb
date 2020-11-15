@@ -6,10 +6,10 @@ class Category < ApplicationRecord
   has_many :articles, through: :article_categories
 
   def last_article
-    self.articles.order('created_at DESC').first
+    articles.order('created_at DESC').first
   end
 
   def article_desc
-    self.articles.order('created_at DESC').includes(:author)
+    articles.order('created_at DESC').includes(:author)
   end
 end
