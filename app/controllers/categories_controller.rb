@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  def show 
+  def show
     @category = Category.find(params[:id])
     @articles = @category.articles.order('created_at DESC').includes(:author)
   end

@@ -1,27 +1,6 @@
-<% if @best_article.nil?%>
-  <h1>Hello in our "Djelfa" Site</h1>
-<% else %>
-  <div class="position-relative">
-    <%= image_tag  @best_article.image_element.image, class:"w-100"  if @best_article.image_element.image.present?%>
-    <div class="position-absolute text-white" style="bottom: 30px">
-      <h3><%= @best_article.title%></h3>
-    </div>
-  </div>
-<% end %>
-
+<%= index_best_article(@best_article) %>
 <div class="row w-100 mx-auto">
   <% @categories.each do | category | %>
-    <% article = category.articles.order('created_at DESC').first%>
-    <% unless article.nil? %>
-      <div class="position-relative col-3 px-0">
-        <%= image_tag  article.image_element.image, class:"w-100 h-100" if article.image_element.image.present?%>
-        <div class="position-absolute text-white" style="top: 10px">
-          <h3><%= category.name%></h3>
-        </div>
-        <div class="position-absolute text-white" style="bottom: 10px">
-          <h3><%= article.title%></h3>
-        </div>
-      </div>
-    <% end %>
+    <%= index_category_last_article(category)%>
   <% end %>
 </div>
