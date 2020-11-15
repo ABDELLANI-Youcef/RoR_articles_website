@@ -11,7 +11,7 @@
     <% articles.each_with_index do | article , index | %>
       <tr>
         <th scope="row"><%= article.title %></th>
-        <td><%= article.vote_ids.size%></td>
+        <td><%= article.votes_count%></td>
         <td><%= link_to  "edit", edit_article_path(article), id: "edit-#{index}" %></td>
         <td><%= link_to  "delete", article_path(id: article.id), method: :delete, class: "btn btn-danger" %></td>
       </tr>

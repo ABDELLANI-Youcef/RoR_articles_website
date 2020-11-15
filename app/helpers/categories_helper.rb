@@ -51,7 +51,7 @@ module CategoriesHelper
   end
 
   def index_category_last_article(category)
-    article = category.articles.order('created_at DESC').first
+    article = category.last_article
     render 'homepage_article', article: article, category: category unless article.nil?
   end
 

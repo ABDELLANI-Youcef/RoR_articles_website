@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
-    @articles = @category.articles.order('created_at DESC').includes(:author)
+    @articles = @category.article_desc
   end
 
   def index
@@ -17,10 +17,7 @@ class CategoriesController < ApplicationController
       a.save
       @categories = Category.all.includes(:articles)
     end
-    @articles = @categories.map { |category| category.articles.last }
-    group = Article.all.includes(:votes)
-    count = group.map { |article| article.votes.size }.max
-    @best_article = group.select { |article| article.votes.size == count }.first
+    @best_article = Article.best_article
   end
 
   def create

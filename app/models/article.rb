@@ -8,4 +8,12 @@ class Article < ApplicationRecord
   has_many :article_categories, dependent: :destroy
   has_many :categories, through: :article_categories
   has_one :image_element, dependent: :destroy
+
+  def votes_count
+    self.votes.count
+  end
+
+  def Article.best_article
+    Article.find_by(id: Article.joins(:votes).order(count_all: :desc).group(:id).count.keys.first)
+  end
 end
