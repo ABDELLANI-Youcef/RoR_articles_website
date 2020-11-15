@@ -15,4 +15,8 @@ module ApplicationHelper
   def write_article_link
     link_to 'Write an Article', new_article_path, class: 'btn btn-outline-success my-2 my-sm-0' if logged_in?
   end
+
+  def show_errors(obj)
+    render 'shared/errors', obj: obj if obj.errors.any?
+  end
 end

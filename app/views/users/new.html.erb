@@ -1,5 +1,5 @@
 <div class="container">
-  <%= render 'shared/errors', obj: @user %>
+  <%= show_errors(@user) %>
   <h1 class="text-center mt-5 mb-4 text-white">Djelfa articles website</h1>
   <%= form_with(model: @user, local: true) do |f| %>
     <div class="form-group">
