@@ -26,7 +26,6 @@ class ArticlesController < ApplicationController
       flash[:notice] = "The article #{@article.title} has been successfully created."
       redirect_to current_user
     else
-      flash[:error] = @article.errors.full_message
       render 'new'
     end
   end
