@@ -1,37 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe 'User management', type: :feature do
-  let(:user) { User.create(name: 'Youcef ABDELLANI') }
-  scenario 'User signs up successfully' do
-    visit root_path
-    click_on 'Sign up'
-    sleep(3)
-    fill_in 'user[name]', with: 'Mohamed Abdellani'
-    click_on 'submit'
-    sleep(3)
-    expect(page).to have_content('Welcome Mohamed Abdellani, you have successfully signed up.')
+RSpec.describe User, type: :model do
+  describe 'associations' do
+    it { should have_many(:votes) }
+    it { should have_many(:articles) }
+    it { should have_many(:voted_articles) }
   end
-
-  scenario 'User signs in successfully' do
-    visit root_path
-    click_on 'Log in'
-    sleep(3)
-    fill_in 'session[name]', with: user.name
-    click_on 'submit'
-    sleep(3)
-    expect(page).to have_content('Logged in successfully.')
-  end
-
-  scenario 'User logs out successfully' do
-    visit root_path
-    click_on 'Log in'
-    sleep(3)
-    fill_in 'session[name]', with: user.name
-    click_on 'submit'
-    sleep(3)
-    expect(page).to have_content('Logged in successfully.')
-    click_on 'Log out'
-    sleep(3)
-    expect(page).to have_content('Logged out.')
+  describe 'validations' do
+    subject { User.new(name: 'Youcef ABDELLANI') }
+    it { should validate_presence_of(:name) }
+    it { should validate_uniqueness_of(:name) }
+    it { should validate_length_of(:name).is_at_least(3)}
   end
 end
