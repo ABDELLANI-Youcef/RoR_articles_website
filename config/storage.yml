@@ -42,3 +42,4 @@ local:
 
 cloudinary:      
   service: Cloudinary
+  api_key: 848896419949381
