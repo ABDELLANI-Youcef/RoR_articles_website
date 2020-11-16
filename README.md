@@ -4,7 +4,8 @@
 
 This is the Capstone project on the Ruby on Rails module from the Microverse program. It consists of making a blog in which the user can write an article in the domain of Technology, books, History, and News. He can also vote for an article that he wrote or other users wrote, delete and edit an article that he wrote.
 
-![app screenshot 1](./Screenshot1.png)
+![app screenshot 1](./Screenshot1.jpg)
+
 ![app screenshot 2](./Screenshot2.png)
 ## Live Demo
 
