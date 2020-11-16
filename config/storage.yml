@@ -42,4 +42,6 @@ local:
 
 cloudinary:      
   service: Cloudinary
+  cloud_name: 'youcef-abdellani'
   api_key: 848896419949381
+  api_secret: 'UW6A87qHIFB4CdQeVHUjOEWNG_A'
