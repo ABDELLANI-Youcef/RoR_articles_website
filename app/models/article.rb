@@ -14,6 +14,9 @@ class Article < ApplicationRecord
   end
 
   def self.best_article
-    Article.find_by(id: Article.joins(:votes).order(count_all: :desc).group(:id).count.keys.first)
+    best_article_id = Article.joins(:votes).order(count_all: :desc).group(:id).count.keys.first
+    return Article.first if best_article_id.nil?
+
+    Article.find_by(id: best_article_id)
   end
 end
