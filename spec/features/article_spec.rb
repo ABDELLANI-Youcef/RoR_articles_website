@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Articles', type: :feature do
-  let(:category1) { Category.create(name: "Technology", priority: 0)}
-  let(:category2) { Category.create(name: "Books", priority: 1)}
-  let(:category3) { Category.create(name: "History", priority: 2)}
-  let(:category4) { Category.create(name: "News", priority: 3)}
+  let(:category1) { Category.create(name: 'Technology', priority: 0) }
+  let(:category2) { Category.create(name: 'Books', priority: 1) }
+  let(:category3) { Category.create(name: 'History', priority: 2) }
+  let(:category4) { Category.create(name: 'News', priority: 3) }
   let(:user) { User.create(name: 'Youcef ABDELLANI') }
   scenario 'User writes article successfully' do
     category1.save
@@ -22,7 +22,7 @@ RSpec.describe 'Articles', type: :feature do
     sleep(3)
     expect(page).to have_content('Write a new article')
     find(:css, "#category-option-#{category1.id}[value='#{category1.id}']").set(true)
-    find(:css, ".form-group h2").set(true)
+    find(:css, '.form-group h2').set(true)
     fill_in 'article_title', with: 'Youcef article'
     fill_in 'article_text', with: 'This is an article for the test'
     click_on 'Create Article'

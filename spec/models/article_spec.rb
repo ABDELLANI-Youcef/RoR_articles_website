@@ -14,9 +14,9 @@ RSpec.describe Article, type: :model do
     subject { user.articles.create(title: 'First article', text: 'Youcef ABDELLANI is making a test ') }
     it { should validate_presence_of(:title) }
     it { should validate_uniqueness_of(:title) }
-    it { should validate_length_of(:title).is_at_least(3)}
+    it { should validate_length_of(:title).is_at_least(3) }
     it { should validate_presence_of(:author_id) }
     it { should validate_presence_of(:text) }
-    it { should validate_length_of(:text).is_at_least(10)}
+    it { should validate_length_of(:text).is_at_least(10) }
   end
 end

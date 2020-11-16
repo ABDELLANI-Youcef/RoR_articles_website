@@ -7,7 +7,7 @@ RSpec.describe Vote, type: :model do
     it { should belong_to(:user) }
     it { should belong_to(:article) }
   end
-  
+
   describe 'validations' do
     subject { user.votes.new(article: article) }
     it { should validate_presence_of(:user) }
