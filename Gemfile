@@ -45,6 +45,7 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 3.33'
   gem 'selenium-webdriver'

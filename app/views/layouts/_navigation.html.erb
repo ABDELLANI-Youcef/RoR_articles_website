@@ -9,18 +9,12 @@
       <li class="nav-item active">
         <%= link_to  "Home", root_path, class: "nav-link text-warning" %>
       </li>
-      <li class="nav-item">
-        <%= link_to  "Technology", category_path(1), class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to  "Books", category_path(2), class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to  "History", category_path(3), class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to  "News", category_path(4), class: "nav-link" %>
-      </li>
+
+      <% Category.all.each do | category | %>
+        <li class="nav-item">
+          <%= link_to  category.name, category, class: "nav-link" %>
+        </li>
+      <% end %>
     </ul>
     
     <%= write_article_link %>

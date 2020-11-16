@@ -9,7 +9,7 @@
           <div class="form-check">
             <%= check_box_tag("category_#{category.name}", category.id, false, :name=> 'article[category_ids][]', id: "category-option-#{category.id}") %>
             
-            <%= label_tag("category-option-#{category.id}", category.name) %>
+            <%= label_tag("category-option-#{category.id}", "Category of #{category.name}") %>
           </div>
         <% end %>
       <% end %>
