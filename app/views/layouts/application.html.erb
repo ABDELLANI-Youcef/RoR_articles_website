@@ -10,6 +10,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/navigation'%>
+    <main class="container-fluid mb-5 px-0">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </main>
+    <%= render 'layouts/footer'%>
   </body>
 </html>

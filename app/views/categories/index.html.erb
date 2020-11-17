@@ -1,0 +1,6 @@
+<%= index_best_article(@best_article) %>
+<div id="categories_articles" class="row w-100 mx-auto">
+  <% @categories.each do | category | %>
+    <%= index_category_last_article(category)%>
+  <% end %>
+</div>
