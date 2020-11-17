@@ -29,7 +29,7 @@ To get a local copy up and running follow these simple example steps.
 - Copy this code: ```git clone "put the link from GitHub repo"```
 - Run the program with this code: ``` bundle install```
 - before running ```rails server``` you must run a few more commands: first-run ```yarn install --check-files```
-- Then run ```rails db:create```, ```rails db:migrate```
+- Then run ```rails db:create```, ```rails db:migrate```, ```rails db:seed```
 - now you can run ```rails server```
 - Stop the program with: "Ctrl + C" (Windows or Linux) or "Command + C"(Apple)
 
