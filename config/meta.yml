@@ -1,0 +1,4 @@
+meta_product_name: "RoR Blog"
+meta_title: "RoR Blog"
+meta_description: "A blog application that lets the user write articles in different domains: Technologies, Books, History, and News. the user can vote also for an article if he likes it. Built using Ruby on Rails. "
+meta_image: "https://live.staticflickr.com/65535/51159536668_1aeba07722_c.jpg" # should exist in `app/assets/images/`

@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="text-center mt-5 mb-4 text-white">Djelfa articles website</h1>
+      
+  <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+    <div class="form-group">
+      <label for="name" class="text-primary"><%= f.label :name %>:</label>
+      <%= f.text_field :name, class: "form-control shadow rounded", id: "name", placeholder: "Enter your name" %>
+    </div>
+
+    <div class="my-3">
+      <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+  <%= link_to  "Djelfa", root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-center text-uppercase" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <%= link_to  "Home", root_path, class: "nav-link", style:"color: #FE6001;" %>
+      </li>
+
+      <% Category.all.each do | category | %>
+        <li class="nav-item">
+          <%= link_to  category.name, category, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+    
+    <%= write_article_link %>
+  </div>
+  <%= sign_in_out_up%>
+</nav>

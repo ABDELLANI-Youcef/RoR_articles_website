@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap/scss/bootstrap";
+
+body,
+footer {
+  background-color: #4e443f;
+}
